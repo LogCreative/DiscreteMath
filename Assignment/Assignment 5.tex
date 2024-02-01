@@ -1,0 +1,93 @@
+%md->tex->template
+\documentclass[12pt]{article}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{longtable,booktabs}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\setlist[enumerate,1]{font=\bfseries}
+\geometry{left=3.0cm,right=2.0cm,top=3.0cm,bottom=3.0cm}
+
+\newenvironment{firstlayer}%
+{\begin{list}{}{\renewcommand{\makelabel}[1]{\textbf{##1}.\hfil}
+}}
+{\end{list}}
+\newenvironment{secondlayer}%
+{\begin{list}{}{\renewcommand{\makelabel}[1]{(##1)\hfil}
+}}
+{\end{list}}
+
+\renewcommand{\proofname}{\textbf{证明}}
+
+\providecommand{\sol}{\textbf{解}.~}
+
+\title{第 5 次作业}
+\author{Log Creative}
+\date{April 4, 2020}
+\begin{document}
+
+\begin{CJK}{UTF8}{gbsn}
+
+\maketitle
+
+\begin{firstlayer}
+  \item[5]将下列语句符号化。
+  \begin{secondlayer}
+    \item[2]凡有理数都可写成分数。
+    
+    \sol $P(x)$表示“$x$是有理数”，$Q(x)$表示是“$x$是分数”，则
+$$
+(\forall x)(P(x)\rightarrow Q(x))
+$$
+    \item[6]凡实数都能比较大小。
+    
+    \sol $P(x)$表示“$x$是实数”，$Q(x,y)$表示“$x,y$可以比较大小”，则
+$$
+(\forall x)(\forall y)(P(x)\wedge P(y)\rightarrow Q(x,y))
+$$
+  \end{secondlayer}
+  \item[7]设个体域为$\{ a,b,c\}$，试将下列公式写成命题逻辑公式。
+  \begin{secondlayer}
+    \item[10]$(\forall y)((\exists x)P(x,y)\rightarrow (\forall x)Q(x,y))$
+    
+    \sol 
+    \begin{align*}
+      (\forall y)&((\exists x)P(x,y)\rightarrow (\forall x)Q(x,y))\\
+      =&(\forall y)(P(a,y)\vee P(b,y)\vee P(c,y)\rightarrow Q(a,y)\wedge Q(b,y)\wedge Q(c,y))\\
+      =&(P(a,a)\vee P(b,a)\vee P(c,a)\rightarrow Q(a,a)\wedge Q(b,a)\wedge Q(c,a))\wedge\\
+      &(P(a,b)\vee P(b,b)\vee P(c,b)\rightarrow Q(a,b)\wedge Q(b,b)\wedge Q(c,b))\wedge\\
+      &(P(a,c)\vee P(b,c)\vee P(c,c)\rightarrow Q(a,c)\wedge Q(b,c)\wedge Q(c,c))
+    \end{align*}
+  \end{secondlayer}
+  \item[8]判断下列公式是普遍有效的，不可满足的还是可满足的？
+  \begin{secondlayer}
+    \item[2]$(\exists x)(P(x)\wedge Q(x))\rightarrow((\exists x)P(x)\wedge (\exists x)Q(x))$
+    
+    \sol 普遍有效。$(\exists x)(P(x)\wedge Q(x))=\text{T}$意味着存在一个$x_0$使得$P(x_0)=\text{T}$而且$Q(x_0)=\text{T}$，也就是$((\exists x)P(x)\wedge (\exists x)Q(x))=\text{T}$，所以普遍有效。
+    
+    \item[6]$(\forall x)(P(x)\vee \neg P(x))$
+    
+    \sol
+普遍有效。因为$P(x)=\text{T}$时，$\neg P(x)=\text{F}$；$P(x)=\text{F}$时，$\neg P(x)=\text{T}$，所以$P(x)\vee \neg P(x)=\text{T}$，也就是$(\forall x)(P(x)\vee \neg P(x))=\text{T}$，所以普遍有效。
+    \item[7]$((\exists x)P(x)\wedge(\exists x)Q(x))\rightarrow (\exists x)(P(x)\wedge Q(x))$
+    
+    \sol 可满足的。只有满足$P(x_0)=\text{T}$的$x_0$能够使$Q(x_0)=\text{T}$,式子才能成立。
+  \end{secondlayer}
+  \item[10]设个体域为$\{a,b\}$，并对$P(x,y)$设定为$P(a,a)=\text{T},P(a,b)=\text{F},P(b,a)=\text{F},P(b,b)=\text{T}$计算下列公式的真值。
+  \begin{secondlayer}
+    \item[1]$(\forall x)(\exists y)P(x,y)=(\forall x)(P(x,a)\vee P(x,b))=\text{T}$
+    \item[3]$(\forall x)(\forall y)P(x,y)=(\forall x)(P(x,a)\wedge P(x,b))=\text{F}$
+    \item[5]$(\exists y)\neg P(a,y)=\neg P(a,a)\vee\neg P(a,b)=\text{T}$
+    \item[7]$(\forall x)(\forall y)(P(x,y)\rightarrow P(y,x))=\text{T}$，由于$(\forall x)(\forall y)(P(a,b)=P(b,a))$
+  \end{secondlayer}
+\end{firstlayer}
+
+
+\end{CJK}
+
+\end{document}
+

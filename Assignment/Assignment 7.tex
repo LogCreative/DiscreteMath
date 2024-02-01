@@ -1,0 +1,75 @@
+%md->tex->template
+\documentclass[12pt]{article}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{longtable,booktabs}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\setlist[enumerate,1]{font=\bfseries}
+\geometry{left=3.0cm,right=2.0cm,top=3.0cm,bottom=3.0cm}
+
+\newenvironment{firstlayer}%
+{\begin{list}{}{\renewcommand{\makelabel}[1]{\textbf{##1}.\hfil}
+}}
+{\end{list}}
+\newenvironment{secondlayer}%
+{\begin{list}{}{\renewcommand{\makelabel}[1]{(##1)\hfil}
+}}
+{\end{list}}
+
+\renewcommand{\proofname}{\textbf{证明}}
+
+\providecommand{\sol}{\textbf{解}.~}
+
+\title{第 7 次作业}
+\author{Log Creative}
+\date{April 18, 2020}
+\begin{document}
+
+\begin{CJK}{UTF8}{gbsn}
+
+\maketitle
+
+\begin{firstlayer}
+  \item[3]指出系列各推演中的错误，并改正之。
+  \begin{secondlayer}
+    \item[9]
+    \begin{align*}
+      (\forall x)(\exists y)P(x,y) & && \\
+      \text{有}(\exists y)P(a,y) & &&\text{$y$与$a$有关} \\
+      \text{有}P(a,b) & &&\text{并非对任一$b$都成立} \\
+      (\forall x)P(x,b) & && \text{存在不能导出全称} \\
+      P(b,b) & && \\
+      (\forall x)P(x,x) & && \text{存在不能导出全称}
+    \end{align*}
+    \textbf{改正：}所找到的$y$是依赖于$x$的，$P(x,y)$的成立是有条件的。所以结论不一定成立。
+    \item[11]
+    \begin{align*}
+     (\forall x)(P(x)\rightarrow Q(x)) & && \\
+     \text{有}P(c)\rightarrow Q(c) & && \\
+     (\exists x)P(x) & && \\
+     \text{有}P(c) & &&\text{上文的$c$不一定满足这个性质} \\
+     Q(c) & && \\
+     (\exists x)Q(x) & &&
+    \end{align*}
+    \textbf{改正：}
+    \begin{align*}
+     (\forall x)(P(x)\rightarrow Q(x)) & && \text{前提}\\
+     (\exists x)P(x) & && \text{前提} \\
+     P(c) & && \text{存在量词消去} \\
+     P(c)\rightarrow Q(c) & && \text{全称量词消去} \\
+     Q(c) & && \text{分离} \\
+     (\exists x)Q(x) & && \text{存在量词引入}
+    \end{align*}
+    
+  \end{secondlayer}
+\end{firstlayer}
+
+\end{CJK}
+
+\end{document}
+

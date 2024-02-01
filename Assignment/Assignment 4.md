@@ -1,0 +1,207 @@
+第二章 
+7 判断下列推理式是否正确?
+
+(10) $((P\wedge Q)\rightarrow R)\wedge ( ( P\vee Q)\rightarrow \neg R)\Rightarrow P\wedge Q\wedge R$
+
+错误。理由：
+
+$((P\wedge Q)\rightarrow R)\wedge (( P\vee Q)\rightarrow \neg R)\rightarrow P\wedge Q\wedge R=\neg ((\neg (P\wedge Q)\vee R)\wedge (\neg ( P\vee Q)\vee \neg R))\vee (P\wedge Q\wedge R)=((P\wedge Q)\wedge \neg R)\vee((P\vee Q)\wedge R)\vee(P\wedge Q\wedge R)=(P\wedge Q\wedge \neg R)\vee(P\wedge R)\vee(Q\wedge R)\vee(P\wedge Q\wedge R)=((P\wedge Q)\wedge(\neg R\vee R))\vee(P\wedge R)\vee(Q\wedge R)=(P\wedge Q)\vee (P\wedge R)\vee(Q\wedge R)$
+
+当$P=Q=\text{F}$时，该式为$\text{F}$。故根据$P\rightarrow Q$为真与$P\Rightarrow Q$等价的关系可以得到推理式错误。
+
+(11) $P \rightarrow Q \Rightarrow ( P \rightarrow R) \rightarrow (Q \rightarrow R)$
+
+错误。理由：
+
+$(P \rightarrow Q) \rightarrow (( P \rightarrow R) \rightarrow (Q \rightarrow R))=\neg (\neg P\vee Q)\vee(\neg(\neg P\vee R)\vee (\neg Q\vee R))=(P\wedge \neg Q)\vee(P\wedge \neg R)\vee(\neg Q\vee R)=\neg Q\vee (P\wedge \neg R)\vee R=\neg Q\vee P\vee R\neq \text{T}$
+
+8 
+(4) $P \vee Q\rightarrow R\wedge S, S\vee E \rightarrow U \Rightarrow P \rightarrow U$
+
+$P \vee Q\rightarrow R\wedge S$
+
+$P$
+
+$R\wedge S$
+
+$S$
+
+$S\vee E \rightarrow U$
+
+$U$
+
+$P\rightarrow U$
+
+(5) $\neg R\vee S, S\rightarrow Q, \neg Q\Rightarrow Q \leftrightarrow R$
+
+$S\rightarrow Q$
+
+$\neg Q\rightarrow \neg S$
+
+$\neg Q$
+
+$\neg S$
+
+$\neg R\vee S$
+
+$\neg S \rightarrow \neg R$
+
+$\neg R$
+
+$Q\leftrightarrow R$
+
+(6) $\neg Q\vee S, ( E\rightarrow \neg U)\rightarrow \neg S\Rightarrow Q\rightarrow E$
+
+$\neg Q\vee S$
+
+$Q\rightarrow S$
+
+$Q$
+
+$S$
+
+$( E\rightarrow \neg U)\rightarrow \neg S$
+
+$S\rightarrow \neg (E\rightarrow \neg U)$
+
+$\neg (E\rightarrow \neg U)$
+
+$E\wedge U$
+
+$E$
+
+(补充) $P\rightarrow (Q\rightarrow R),Q\rightarrow (R\rightarrow S)\Rightarrow P\rightarrow (R\rightarrow S)$
+
+$P\rightarrow (Q\rightarrow R)$
+
+$P$
+
+$Q\rightarrow R$
+
+$Q\rightarrow (R\rightarrow S)$
+
+$(Q\rightarrow R)\rightarrow (R\rightarrow S)$
+
+$R\rightarrow S$
+
+9 证明下列推理关系:
+
+(1) 在大城市球赛中. 如果北京队第三, 那么如果上海队第二, 那么天津队第四. 沈阳队不是第一或北京队第三. 上海队第二. 从而知, 如果沈阳队第一, 那么天津队第四.
+
+证明：
+
+令：
+$A_1=$沈阳队第一，$A_2=$上海队第二，$A_3=$北京队第三，$A_4=$天津队第四。
+
+则原命题可以陈述为：$A_3\rightarrow (A_2\rightarrow A_4),\neg A_1\vee A_3,A_2\Rightarrow A_1\rightarrow A_4$
+
+$\neg A_1\vee A_3$
+
+$A_1\rightarrow A_3$
+
+$A_1$
+
+$A_3$
+
+$A_3\rightarrow (A_2\rightarrow A_4)$
+
+$A_2\rightarrow A_4$
+
+$A_2$
+
+$A_4$
+
+$A_1\rightarrow A_4$
+
+12 利用归结法证明
+
+(1)$( P \vee Q) \wedge ( P \rightarrow R) \wedge (Q\rightarrow R)\Rightarrow R$
+
+证明
+
+$( P \vee Q) \wedge ( P \rightarrow R) \wedge (Q\rightarrow R)\wedge \neg R=( P \vee Q) \wedge ( \neg P \vee R) \wedge (\neg Q\vee R)\wedge \neg R$
+
+建立子句集
+$S=\{ P \vee Q, \neg P \vee R, \neg Q\vee R, \neg R \}$
+
+$P \vee Q$
+
+$\neg P \vee R$
+
+$\neg Q\vee R$
+
+$\neg R$
+
+$Q\vee R$
+
+$R$
+
+$\square$
+
+第四章
+
+1 判断下列各式是否合式公式
+
+(1) $P ( x ) \vee(\forall x )Q( x )$
+
+不是。同一变量两边辖域不同。
+
+(2) $( \forall x ) ( P ( x ) \wedge Q( x ) )$
+
+是。
+
+(4) $( \exists x ) P ( y , z )$
+
+是。
+
+(6) $( \forall x ) ( P ( x ) \wedge R( x ) ) \rightarrow ( ( \forall x ) P ( x ) \wedge Q( x ) )$
+
+不是。右侧的同一变量两侧辖域不同。
+
+(8) $( \exists x ) ( ( \forall y) P ( y) \rightarrow  Q( x , y ) )$
+
+不是。$( \forall y) P ( y) \rightarrow  Q( x , y )$内$y$的辖域不同。
+
+(9) $( \exist x ) ( \exist y ) ( P ( x , y , z ) \rightarrow S( u , v) )$
+
+是。
+
+2 作如何的具体设定下列公式方为命题
+
+(3) $( \forall x ) ( \exists y ) P ( x , f ( y , a ) ) \wedge Q( z)$
+
+当且仅当$x$,$y$,$a$,$z$取为常数，$f$是常函数，$P,Q$为谓词常量。
+
+3 指出下列公式中的自由变元和约束变元, 并指出各量词的辖域
+
+(2) $( \forall x ) ( P ( x ) \wedge ( \exist y )Q( y ) ) \wedge ( ( \forall x ) P ( x ) \rightarrow Q( z) )$
+
+$z$是自由变元，$x,y$是约束变元。
+
+$( \forall x ) ( P ( x ) \wedge ( \exist y )Q( y ) )$，$P ( x ) \wedge ( \exist y )Q( y )$是$x$的辖域。
+
+$( \exist y )Q( y )$，$Q( y )$是$y$的辖域。
+
+$( \forall x ) P ( x )$，$P ( x )$是$x$的辖域。
+
+(3) $( \forall x ) ( P ( x ) \leftrightarrow Q( x ) ) \wedge ( \exist y ) R( y ) \wedge S( z)$
+
+$z$是自由变元，$x,y$是约束变元。
+
+$( \forall x ) ( P ( x ) \leftrightarrow Q( x ) )$,$P ( x ) \leftrightarrow Q( x )$是$x$的辖域。
+
+$( \exist y ) R( y )$,$R( y )$是$y$的辖域。
+
+4 求下列各式的真值
+
+(2) $( \exists x ) ( P\rightarrow Q( x ) ) \wedge R( a )$.论域为$\{- 2, 1, 2, 3, 5, 6\}$, $P$ 表 $2> 1$, $Q( x )$表 $x \leq 3$, $R( x )$ 表$x > 5,a= 3$.
+
+解：
+$P=\text{T}$
+
+$(\exists x)(P\rightarrow Q( x ))=\text{T}$(因为论域中有满足$x \leq 3$的数字，$\text{T}\rightarrow \text{T}=\text{T}$)
+
+$R(a)=\text{F}$(因为$3\ngeq 5$)
+
+$( \exists x ) ( P\rightarrow Q( x ) ) \wedge R( a )=\text{F}$
+

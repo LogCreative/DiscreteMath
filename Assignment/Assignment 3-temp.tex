@@ -1,0 +1,211 @@
+%md->tex->template
+\documentclass[12pt]{article}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{longtable,booktabs}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\setlist[enumerate,1]{font=\bfseries}
+\geometry{left=3.0cm,right=2.0cm,top=3.0cm,bottom=3.0cm}
+
+\newenvironment{firstlayer}%
+{\begin{list}{}{\renewcommand{\makelabel}[1]{\textbf{##1}.\hfil}
+}}
+{\end{list}}
+\newenvironment{secondlayer}%
+{\begin{list}{}{\renewcommand{\makelabel}[1]{(##1)\hfil}
+}}
+{\end{list}}
+
+\renewcommand{\proofname}{\textbf{证明}}
+
+\title{第 3 次作业}
+\author{Log Creative}
+\date{March 21, 2020}
+\begin{document}
+
+\begin{CJK}{UTF8}{gbsn}
+
+\maketitle
+
+\begin{firstlayer}
+  \item[2] 由下列真值表,分别从T和F来列写出\(A\),\(B\)和\(C\)的表达式,并分别以符号\(m_i\)和\(M_i\)表示.
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\(P\) & \(Q\) & \(A\) & \(B\) & \(C\)\tabularnewline
+\midrule
+\endhead
+F & F & T & T & T\tabularnewline
+F & T & T & F & F\tabularnewline
+T & F & T & F & F\tabularnewline
+T & T & F & T & F\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{解}.
+
+\begin{align}
+  A&=P\uparrow Q && \text{(表达式)} \nonumber \\
+  &=\neg P \vee \neg Q \nonumber \\
+  &=M_0 && (M_i) \nonumber \\
+  &=\neg(P\wedge Q) \nonumber \\
+  &=\neg m_3 \nonumber \\
+  &=\vee_{0,1,2} \nonumber \\
+  &=m_0\vee m_1 \vee m_2 && (m_i) 
+\end{align}
+\begin{align}
+  B&=P\leftrightarrow Q && \text{(表达式)} \nonumber\\
+  &=(\neg P \wedge \neg Q)\vee (P \wedge Q)  \nonumber \\
+  &=m_0\vee m_3 && (m_i) \nonumber \\
+  &=\vee_{0,3}\nonumber \\
+  &=(P \vee \neg Q)\wedge (\neg P\vee Q) \nonumber \\
+  &=M_1\wedge M_2 && (M_i) \\
+  &=\wedge_{1,2} \nonumber 
+\end{align}
+\begin{align}
+  C&=P\downarrow Q && \text{(表达式)} \nonumber\\
+  &=\neg P\wedge \neg Q \nonumber \\
+  &=m_0 && (m_i) \nonumber \\
+  &=\neg (P\vee Q) \nonumber \\
+  &=\neg M_3 \nonumber \\
+  &=M_0\wedge M_1 \wedge M_2 && (M_i) \\
+  &=\wedge_{0,1,2} \nonumber 
+\end{align}
+
+\item[4]证明
+\begin{secondlayer}
+  \item[1]\(A\rightarrow B\)与\(B^*\rightarrow A^*\)同永真、同可满足。
+  \begin{proof}
+    通过证明重言蕴含来同时证明两者。
+
+若\(A\rightarrow B\)真，则\(\neg B\rightarrow \neg A\)真。（逆否命题）
+
+而\(\neg A=A^{*-},\neg B=B^{*-}\)，则\(B^{*-}\rightarrow A^{*-}\)真。（置换规则）
+
+假设\(A=A(P_1,P_2,\cdots,P_n)\)，\\
+则\(A^-=A(\neg P_1,\neg P_2,\cdots,\neg P_n)\)，其中\(P_i(i=1,2,\cdots,n)\)是任意的命题，可以将\(\neg P_i\)代入后者，将得到\(A\)，也就意味着\(B^*\rightarrow A^*\)真。也就是
+\begin{equation}\label{11}
+  A\rightarrow B\Rightarrow B^*\rightarrow A^*
+\end{equation}
+如果\(B^*\rightarrow A^*\)真，则\((A^*)^*\rightarrow (B^*)^*\)永真。（公式 (\ref{11})）
+
+则\(A\rightarrow B\)真。（\((A^*)^*=A\)）
+
+也就是
+\begin{equation}\label{12}
+  B^*\rightarrow A^* \Rightarrow A\rightarrow B
+\end{equation}
+
+综合公式 (\ref{11}) 和 (\ref{12})，有
+\begin{equation}
+  A\rightarrow B\Leftrightarrow B^*\rightarrow A^*
+\end{equation}
+\begin{secondlayer}
+  \item[i 同永真]如果\(A→B\)永真，则根据永真蕴含的定义，\(B^*→A^*\)也将永真。反之亦然。
+  \item[ii 同可满足]如果\(A(a_1,a_2,\cdots,a_n),B(b_1,b_2,\cdots,b_n)\)是满足\(A\rightarrow B\)真的一个条件，则根据永真蕴含的定义，\(B^*\rightarrow A^*\)也将真。反之亦然。
+\end{secondlayer}
+
+  \end{proof}
+  
+\item[2]\(A\leftrightarrow B\)与\(A^*\leftrightarrow B^*\)同永真、同可满足。
+\begin{proof}
+  同样地，若\(A\leftrightarrow B\)真，则\(A=B\)(等值定理)，\(\neg A=\neg B\)(同真假),\(\neg A\leftrightarrow \neg B\)真(等值定理)。
+
+之后，根据类似的推理，\(A^{*-}\leftrightarrow B^{*-},A^{*}\leftrightarrow B^{*}\)，也就是
+\begin{equation}\label{21}
+  A\leftrightarrow B \Rightarrow A^*\leftrightarrow B^*
+\end{equation}
+
+反之，\(A^*\leftrightarrow B^*\)真，则\((A^*)^*\leftrightarrow (B^*)^*\)真，\(A\leftrightarrow B\)真，也就是
+\begin{equation}\label{22}
+  A^*\leftrightarrow B^* \Rightarrow A\leftrightarrow B
+\end{equation}
+
+综合公式 (\ref{21}) 和 (\ref{22}),有
+\begin{equation}
+  A\leftrightarrow B \Leftrightarrow A^*\leftrightarrow B^*
+\end{equation}
+
+故两者同永真，同可满足。
+\end{proof}
+\end{secondlayer}
+\item[5]给出下列各公式的合取范式、析取范式、主合取范式和主析取范式。并给出所有使公式为真的解释。
+\begin{secondlayer}
+  \item[4]\((P\wedge Q)\vee (\neg P\wedge Q \wedge R)\)
+  
+  \textbf{解}.
+  %\begin{subequations}
+    \begin{align}
+    (P\wedge Q)&\vee (\neg P\wedge Q \wedge R) &&\text{(析取范式)} \\
+    =&(P\vee \neg P)\wedge (P \vee Q) \wedge (P \vee R) \wedge (Q\vee \neg P)\nonumber\\
+    & \wedge (Q\vee Q)\wedge (Q\vee R) \nonumber \\
+    =&(P\vee Q)\wedge (P\vee R)\wedge (Q\vee \neg P)\wedge Q\wedge (Q\vee R)\nonumber \\
+    =&Q\wedge(P\vee R)&&\text{(合取范式)}\\
+    (P\wedge Q)&\vee (\neg P\wedge Q \wedge R)\nonumber\\
+    =&(P\wedge Q\wedge (R\vee \neg R))\vee (\neg P\wedge Q \wedge R) \nonumber \\
+    =&(P\wedge Q\wedge R)\vee(P\wedge Q\wedge \neg R)\vee (\neg P\wedge Q \wedge R) \nonumber \\
+    =&m_7\vee m_6\vee m_3\nonumber \\
+    =&\vee_{3,6,7}&&\text{(主析取范式)}\\
+    =&\wedge_{\{0,1,2,4,5\}\text{补}} \nonumber \\
+    =&\wedge_{2,3,5,6,7}&&\text{(主合取范式)}
+  \end{align}
+  %\end{subequations}
+  使公式为真的解释：
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\(P\) & \(Q\) & \(R\) & \(m_i\)\tabularnewline
+\midrule
+\endhead
+F & T & T & \(m_3\)\tabularnewline
+T & T & F & \(m_6\)\tabularnewline
+T & T & T & \(m_7\)\tabularnewline
+\bottomrule
+\end{longtable}
+\newpage
+\item[8] $(P\rightarrow Q)\vee ((Q\wedge P)\leftrightarrow (Q\leftrightarrow \neg P))$
+
+  \textbf{解}.
+%\begin{subequations}
+  \begin{align}
+    (P\rightarrow Q)&\vee ((Q\wedge P)\leftrightarrow (Q\leftrightarrow \neg P)) \nonumber \\
+    =&(P\rightarrow Q)\vee ((Q\wedge P)\leftrightarrow (\neg Q \wedge \neg \neg P)\vee (Q \wedge \neg P))\nonumber \\
+    =&(\neg P \vee Q)\vee [(Q\wedge P)\leftrightarrow (\neg Q \wedge P)\vee (Q \wedge \neg P)]\nonumber \\
+    =&(\neg P \vee Q)\vee\{[(Q\wedge P)\wedge ((\neg Q \wedge P)\vee (Q \wedge \neg P))] \nonumber \\ 
+    &\vee [\neg (Q\wedge P)\wedge \neg ((\neg Q \wedge P)\vee (Q \wedge \neg P))] \}\nonumber \\
+    =&(\neg P \vee Q)\vee\{[((Q\wedge P)\wedge (\neg Q \wedge P))\vee ((Q\wedge P)\wedge\nonumber \\
+    &(Q \wedge \neg P))]\vee [\neg (Q\wedge P)\wedge (\neg(\neg Q \wedge P)\wedge \neg(Q \wedge \neg P))] \}\nonumber \\
+    =&(\neg P \vee Q)\vee\{\text{F}\vee[(\neg Q\vee \neg P)\wedge (( Q \vee \neg P)\wedge ( P\vee \neg Q))] \}\nonumber \\
+    =&(\neg P \vee Q)\vee\{[(\neg Q\vee \neg P)\wedge ( P\vee \neg Q)]\wedge ( \neg P \vee Q) \}\nonumber 
+  \end{align}
+  \begin{align}
+    =&\neg P \vee Q&&\text{(析取范式、合取范式)}\\
+    =&M_1\nonumber \\
+    =&\wedge_1&& \text{(主合取范式)}\\
+    =&\vee_{\{0,2,3\}\text{补}}\nonumber \\
+    =&\vee_{0,1,3}&& \text{(主析取范式)}
+  \end{align}
+%\end{subequations}
+使公式为真的解释：
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\(P\) & \(Q\) & \(m_i\)\tabularnewline
+\midrule
+\endhead
+F & F & \(m_0\)\tabularnewline
+F & T & \(m_1\)\tabularnewline
+T & T & \(m_3\)\tabularnewline
+\bottomrule
+\end{longtable}
+\end{secondlayer}
+
+\end{firstlayer}
+
+\end{CJK}
+
+\end{document}
+

@@ -1,0 +1,115 @@
+%md->tex->template
+\documentclass[12pt]{article}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{longtable,booktabs}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\setlist[enumerate,1]{font=\bfseries}
+\geometry{left=3.0cm,right=2.0cm,top=3.0cm,bottom=3.0cm}
+
+\newenvironment{firstlayer}%
+{\begin{list}{}{\renewcommand{\makelabel}[1]{\textbf{##1}.\hfil}
+}}
+{\end{list}}
+\newenvironment{secondlayer}%
+{\begin{list}{}{\renewcommand{\makelabel}[1]{(##1)\hfil}
+}}
+{\end{list}}
+
+\renewcommand{\proofname}{\textbf{证明}}
+
+\title{第 2 次作业}
+\author{李子龙 518070910095}
+\date{March 15, 2020}
+\begin{document}
+
+\begin{CJK}{UTF8}{gbsn}
+
+\maketitle
+
+\begin{firstlayer}
+\item[1] 证明下列等值公式。
+    \begin{secondlayer}
+    \item[1] $P\rightarrow (Q\wedge R)=(P\rightarrow Q)\wedge (P\rightarrow R)$
+    \begin{proof}
+      \begin{align*}
+        P\rightarrow (Q\wedge R)&= \neg P\vee (Q\wedge R) &&\text{($\rightarrow$的等值公式)} \\
+        &=(\neg P \vee Q)\wedge(\neg P \vee R) &&\text{(分配律)} \\
+        &=(P\rightarrow Q)\wedge (P\rightarrow R) &&\text{($\rightarrow$的等值公式)}
+      \end{align*}
+    \end{proof}
+    \item[3] $((P\rightarrow \neg Q)\rightarrow (Q\rightarrow \neg P))\wedge R=R$
+    \begin{proof}
+      \begin{align*}
+        ((P\rightarrow \neg Q)\rightarrow (Q\rightarrow \neg P))\wedge R&=((P\rightarrow \neg Q)\rightarrow (\neg \neg P\rightarrow \neg Q))\wedge R &&\text{(逆否定理)} \\
+        &=((P\rightarrow \neg Q)\rightarrow (P\rightarrow \neg Q))\wedge R &&\text{(双重否定)}\\
+        &=\text{T}\wedge R &&\text{(等幂律)}\\
+        &=R &&\text{(同一律)}
+      \end{align*}
+    \end{proof}
+    \item[5] $P\rightarrow (Q\rightarrow R) = (P\wedge Q)\rightarrow R$
+    \begin{proof}
+      \begin{align*}
+        P\rightarrow (Q\rightarrow R)&=P\rightarrow (\neg Q\vee R)&&\text{($\rightarrow$的等值公式)} \\
+        & =\neg P\vee (\neg Q\vee R) &&\text{($\rightarrow$的等值公式)} \\
+        & =(\neg P\vee \neg Q)\vee R &&\text{(结合律)}\\
+        & =\neg (P\wedge Q)\vee R &&\text{(摩根律)}\\
+        & =(P\wedge Q)\rightarrow R &&\text{($\rightarrow$的等值公式)}
+      \end{align*}
+    \end{proof}
+    \item[6] $\neg (P\leftrightarrow Q)=(P\wedge \neg Q)\vee (\neg P \wedge Q)$
+    \begin{proof}
+      \begin{align*}
+        \neg (P\leftrightarrow Q)&=\neg ((P\rightarrow Q)\wedge (Q\rightarrow P)) &&\text{($\leftrightarrow$定义)}\\
+        & =\neg(P\rightarrow Q)\vee \neg(Q\rightarrow P) &&\text{(摩根律)} \\
+        & =\neg(\neg P \vee Q)\vee \neg(\neg Q \vee P) &&\text{($\rightarrow$的等值公式)}\\
+        &=(\neg \neg P \wedge \neg Q)\vee (\neg \neg Q \wedge \neg P) &&\text{(摩根律)}\\
+        &=(P \wedge \neg Q)\vee (Q \wedge \neg P)&&\text{(双重否定)}  \\
+        &=(P\wedge \neg Q)\vee (\neg P \wedge Q) &&\text{(交换律)}
+      \end{align*}
+    \end{proof}
+    \end{secondlayer}
+\item[3] 用$\uparrow$和$\downarrow$分别表示出$\neg$, $\wedge$, $\vee$, $\rightarrow$和 $\leftrightarrow$。
+\begin{proof}
+  令$P,Q$为命题变元。
+  \begin{subequations}
+    \begin{align}
+      \neg P&=\neg P\vee \neg P && \text{(等幂律)} \nonumber \\
+      &=P\uparrow P && \text{($\uparrow$定义)} \label{neg1}\\
+      \neg P&=\neg P\wedge \neg P &&\text{(等幂律)}\nonumber \\
+      &=P\downarrow P &&\text{($\downarrow$定义)} \label{neg2}
+    \end{align}
+  \end{subequations}
+  \begin{align}
+    P\wedge Q&=\neg \neg P \wedge \neg \neg Q&& \text{(双重否定)} \nonumber \\
+    &=\neg P \downarrow \neg Q &&\text{($\downarrow$ 定义)} \nonumber \\
+    &=(P\uparrow P)\downarrow (Q\uparrow Q)&&\text{(公式 (\ref{neg1}))} \label{wedge1}
+  \end{align}
+  \begin{align}
+    P \vee Q&=\neg \neg P \vee \neg \neg Q &&\text{(双重否定)} \nonumber \\
+    &=\neg P\uparrow \neg Q &&\text{($\uparrow$定义)} \nonumber \\
+    &=(P \downarrow P)\uparrow (Q \downarrow Q)  &&\text{(公式 (\ref{neg2}))} \label{vee1}
+  \end{align}
+  \begin{align}
+    P \rightarrow Q&=\neg P\vee Q&&\text{($\rightarrow$的等值公式)} \nonumber \\
+    &=(P\uparrow P)\vee Q&&\text{(公式 (\ref{neg1}))} \nonumber \\
+    &=((P\uparrow P)\downarrow (P\uparrow P))\uparrow (Q\downarrow Q) &&\text{(公式 (\ref{vee1}))} \label{rightarrow1}
+  \end{align}
+  \begin{align*}
+    P\leftrightarrow Q=&(P\rightarrow Q)\wedge(Q\rightarrow P)&&\text{($\leftrightarrow$定义)} \nonumber \\
+    =&(((P\uparrow P)\downarrow (P\uparrow P))\uparrow (Q\downarrow Q)) 
+    \wedge (((Q\uparrow Q)\downarrow (Q\uparrow Q))\uparrow (P\downarrow P))&&\text{(公式 (\ref{rightarrow1}))} \nonumber \\
+    =&((((P\uparrow P)\downarrow (P\uparrow P))\uparrow (Q\downarrow Q)) \uparrow (((P\uparrow P)\downarrow (P\uparrow P))\uparrow (Q\downarrow Q)))) \nonumber \\
+    &\downarrow ((((Q\uparrow Q)\downarrow (Q\uparrow Q))\uparrow (P\downarrow P))\uparrow (((Q\uparrow Q)\downarrow (Q\uparrow Q))\uparrow (P\downarrow P))) &&\text{(公式 (\ref{wedge1}))}
+  \end{align*}
+\end{proof}
+\end{firstlayer}
+
+\end{CJK}
+
+\end{document}
+
